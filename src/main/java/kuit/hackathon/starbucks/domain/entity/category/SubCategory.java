@@ -23,7 +23,7 @@ public class SubCategory {
 
     @Embedded
     private Name name;
-
+  
     @Column(name = "image_url")
     private String imageUrl;
 
