@@ -19,12 +19,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/menu")
 public class OptionController {
     //음료메뉴별 옵션 조회, 선택
-    @GetMapping("/drink")
-    public HttpEntity<RecommandMenuDTO> drinkOption(Drink drink){
-        log.info("OptionController.drinkOption");
-        Option option = drink.getOption();
-        HttpEntity< MultiValueMap<String, String>> dtoHttpEntity = new HttpEntity<>(RecommandMenuDTO.getName(), RecommandMenuDTO.getImageUrl());
-
-        return dtoHttpEntity;
-    }
+//    @GetMapping("/drink")
+//    public HttpEntity<RecommandMenuDTO> drinkOption(Drink drink){
+//        log.info("OptionController.drinkOption");
+//        Option option = drink.getOption();
+//        HttpEntity< MultiValueMap<String, String>> dtoHttpEntity = new HttpEntity<>(RecommandMenuDTO.getName(), RecommandMenuDTO.getImageUrl());
+//
+//        return dtoHttpEntity;
+//    }
 }
