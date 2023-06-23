@@ -18,7 +18,7 @@ public class OptionRepository {
     }
 
 
-    public DrinkOption getOptions_drink(String menuId) {
+    public DrinkOption getOptions_drink(Long menuId) {
 
         String sql = "select menu.menu_id,\n" +
                 "       o.option_id,\n" +
@@ -38,7 +38,7 @@ public class OptionRepository {
 
         return jdbcTemplate.queryForObject(sql, param,
                 (rs, rowNum) -> new DrinkOption(
-                        rs.getInt("option_id"),
+                        rs.getLong("option_id"),
                         rs.getString("size"),
                         rs.getString("cup"),
                         rs.getInt("shot"),
@@ -51,7 +51,7 @@ public class OptionRepository {
 
     }
 
-    public FoodOption getOptions_food(String menuId) {
+    public FoodOption getOptions_food(Long menuId) {
         String sql = "select menu.menu_id,\n" +
                 "       o.option_id,\n" +
                 "       o.is_heated\n" +
@@ -64,7 +64,7 @@ public class OptionRepository {
 
         return jdbcTemplate.queryForObject(sql, param,
                 (rs, rowNum) -> new FoodOption(
-                        rs.getInt("optionId"),
+                        rs.getLong("optionId"),
                         rs.getBoolean("is_heated")
                 )
         );
