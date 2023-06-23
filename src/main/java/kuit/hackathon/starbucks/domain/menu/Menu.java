@@ -1,16 +1,15 @@
-package kuit.hackathon.starbucks.domain;
+package kuit.hackathon.starbucks.domain.menu;
 
 import jakarta.persistence.*;
+import kuit.hackathon.starbucks.domain.BaseEntity;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-import java.math.BigDecimal;
 
 @Entity
 @Getter
-@Setter
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Menu extends BaseEntity {
 
@@ -25,16 +24,11 @@ public class Menu extends BaseEntity {
     @Column(name = "name_eng", length = 30)
     private String nameEng;
 
-    @Column(name = "price")
     private Long price;
 
-    @Column(name = "info")
     private String info;
 
     @Column(name = "image_url")
     private String imageUrl;
-
-    @Column(name = "dtype", length = 10)
-    private String dType;
 
 }
