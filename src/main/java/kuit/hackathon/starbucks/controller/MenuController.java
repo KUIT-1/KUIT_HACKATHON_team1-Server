@@ -37,4 +37,10 @@ public class MenuController
         return new ResponseEntity<>(new ListDto(categories), HttpStatusCode.valueOf(200));
         //return id;
     }
+
+    @GetMapping("/subCategory")
+    public HttpEntity<MenuListDto> getMenus(@RequestParam Long id) {
+        List<MenusResponseDto> menus = menuService.getMenus(id);
+        return new ResponseEntity<>(new MenuListDto(menus),HttpStatusCode.valueOf(200));
+    }
 }
