@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Entity
 @Getter
-@DiscriminatorValue(value = "P")
+//@DiscriminatorValue(value = "P")
 @PrimaryKeyJoinColumn
 @Table(name = "product_menu")
 public class Product extends Food {
