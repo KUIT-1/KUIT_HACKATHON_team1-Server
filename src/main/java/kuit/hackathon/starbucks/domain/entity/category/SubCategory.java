@@ -24,6 +24,9 @@ public class SubCategory {
     @Embedded
     private Name name;
 
+    @Column(name = "image_url")
+    private String imageUrl;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "main_category_id")
     private MainCategory mainCategory;

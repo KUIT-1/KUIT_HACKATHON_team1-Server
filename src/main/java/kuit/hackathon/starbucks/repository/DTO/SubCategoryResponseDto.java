@@ -10,10 +10,12 @@ public class SubCategoryResponseDto {
     private final Long id;
     private final String name_kr;
     private final String name_eng;
+    private final String image_url;
 
     public SubCategoryResponseDto(SubCategory subCategory){
         this.id= subCategory.getId();
         this.name_kr=subCategory.getName().getNameKr();
         this.name_eng=subCategory.getName().getNameEng();
+        this.image_url= subCategory.getImageUrl();
     }
 }
