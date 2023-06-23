@@ -8,9 +8,6 @@ import java.util.List;
 
 @AllArgsConstructor
 @Getter
-public class ListDto {
-
-    List<SubCategoryResponseDto> subCategoryList = new ArrayList<>();
-
-
+public class MenuListDto {
+    List<MenusResponseDto> menuList=new ArrayList<>();
 }
