@@ -2,10 +2,14 @@ package kuit.hackathon.starbucks.domain.entity.category;
 
 
 import jakarta.persistence.*;
+import kuit.hackathon.starbucks.domain.entity.menu.Menu;
 import kuit.hackathon.starbucks.domain.others.Name;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -20,8 +24,11 @@ public class SubCategory {
     @Embedded
     private Name name;
 
-//    @ManyToOne
-//    @JoinColumn(name = "main_category_id")
-//    private MainCategory mainCategory;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "main_category_id")
+    private MainCategory mainCategory;
+
+    @OneToMany(mappedBy = "subCategory")
+    private List<Menu> menus = new ArrayList<>();
 
 }

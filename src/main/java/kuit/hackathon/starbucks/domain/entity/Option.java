@@ -37,7 +37,7 @@ public class Option {
 
     private Integer syrup;
 
-    @OneToOne(mappedBy = "option")
+    @OneToOne(mappedBy = "option", fetch = FetchType.LAZY)
     private Menu menu;
 
 
