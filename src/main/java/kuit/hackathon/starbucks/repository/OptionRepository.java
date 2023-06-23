@@ -38,7 +38,7 @@ public class OptionRepository {
 
         return jdbcTemplate.queryForObject(sql, param,
                 (rs, rowNum) -> new DrinkOption(
-                        rs.getInt("option_id"),
+                        rs.getLong("option_id"),
                         rs.getString("size"),
                         rs.getString("cup"),
                         rs.getInt("shot"),

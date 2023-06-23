@@ -20,12 +20,20 @@ import org.springframework.web.bind.annotation.RestController;
 public class OptionController {
     private final OptionService optionService;
 
-    @GetMapping("/drink/{menuId}/options")
+//    @GetMapping("/drink/{menuId}/options")
     public ResponseEntity<DrinkOption> getOptions_drink(@PathVariable String menuId) {
         log.info("OptionController.drinkOption");
         log.info("menuId={}", menuId);
 
         DrinkOption drinkOption = optionService.getOptions_drink(menuId);
+        return new ResponseEntity<>(drinkOption, HttpStatusCode.valueOf(200)) ;
+    }
+
+    @GetMapping("/drink/{menuId}/options")
+    public ResponseEntity<DrinkOption> getOptions_drink(@PathVariable Long menuId) {
+
+        log.info("sadf");
+        DrinkOption drinkOption = optionService.findOptionByMenuId(menuId);
         return new ResponseEntity<>(drinkOption, HttpStatusCode.valueOf(200)) ;
     }
 
@@ -35,7 +43,7 @@ public class OptionController {
 
         FoodOption foodOption = optionService.getOptions_food(menuId);
 
-        ResponseEntity<FoodOption> responseEntity = new ResponseEntity<>(HttpStatusCode.valueOf(200));
+        ResponseEntity<FoodOption> responseEntity = new ResponseEntity<>(foodOption, HttpStatusCode.valueOf(200));
         return responseEntity;
     }
 }
