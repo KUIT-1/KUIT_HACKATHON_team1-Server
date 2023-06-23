@@ -31,7 +31,7 @@ public class Option {
     @Column(name = "cream", length = 20)
     private String cream;
 
-    private String isHeated;
+    private boolean isHeated;
 
     private Integer shot;
 

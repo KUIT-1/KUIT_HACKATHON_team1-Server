@@ -5,17 +5,15 @@ import lombok.Getter;
 
 @Entity
 @Getter
-@DiscriminatorValue(value = "F")
+//@DiscriminatorValue(value = "F")
 @PrimaryKeyJoinColumn
 @Table(name = "food_menu")
 public class Food extends Menu {
 
-    @Lob
-    @Column(name = "product_nutrition")
+    @Column(name = "production_nutrition", length = 500)
     private String productNutrition;
 
-    @Lob
-    @Column(name = "product_info")
+    @Column(name = "production_info", length = 100)
     private String productInfo;
 
 }

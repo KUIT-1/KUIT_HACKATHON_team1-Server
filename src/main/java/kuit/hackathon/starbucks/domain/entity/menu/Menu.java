@@ -11,11 +11,10 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 //@DiscriminatorColumn(name = "dtype")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Menu extends BaseEntity {
-
+public class Menu {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "menu_id")
@@ -31,7 +30,7 @@ public class Menu extends BaseEntity {
     @Column(name = "image_url")
     private String imageUrl;
 
-    @Column(name = "dtype")
+    @Column(name = "dtype", insertable = false, updatable = false)
     private String dtype;
 
     @OneToOne(fetch = FetchType.LAZY)

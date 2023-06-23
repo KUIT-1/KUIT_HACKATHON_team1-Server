@@ -38,6 +38,7 @@ public class OptionRepository {
 
         return jdbcTemplate.queryForObject(sql, param,
                 (rs, rowNum) -> new DrinkOption(
+                        rs.getInt("option_id"),
                         rs.getString("size"),
                         rs.getString("cup"),
                         rs.getInt("shot"),
@@ -63,6 +64,7 @@ public class OptionRepository {
 
         return jdbcTemplate.queryForObject(sql, param,
                 (rs, rowNum) -> new FoodOption(
+                        rs.getInt("optionId"),
                         rs.getBoolean("is_heated")
                 )
         );
