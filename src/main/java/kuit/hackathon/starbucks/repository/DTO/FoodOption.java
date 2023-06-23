@@ -3,7 +3,7 @@ package kuit.hackathon.starbucks.repository.DTO;
 import lombok.Getter;
 
 @Getter
-public class FoodOption {
+public class FoodOption extends OptionDto {
     private Long optionId;
     private boolean is_heated;
 

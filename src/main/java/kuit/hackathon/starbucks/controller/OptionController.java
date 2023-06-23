@@ -2,6 +2,7 @@ package kuit.hackathon.starbucks.controller;
 
 import kuit.hackathon.starbucks.repository.DTO.DrinkOption;
 import kuit.hackathon.starbucks.repository.DTO.FoodOption;
+import kuit.hackathon.starbucks.repository.DTO.OptionDto;
 import kuit.hackathon.starbucks.sevice.OptionService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -33,11 +34,11 @@ public class OptionController {
      */
 
     @GetMapping("/{menuId}/options")
-    public ResponseEntity<DrinkOption> getOptions_drink(@PathVariable Long menuId) {
+    public ResponseEntity<OptionDto> getOptions_drink(@PathVariable Long menuId) {
 
         log.info("sadf");
-        DrinkOption drinkOption = optionService.findOptionByMenuId(menuId);
-        return new ResponseEntity<>(drinkOption, HttpStatusCode.valueOf(200)) ;
+        OptionDto optionDto = optionService.findOptionByMenuId(menuId);
+        return new ResponseEntity<>(optionDto, HttpStatusCode.valueOf(200)) ;
     }
 
 
