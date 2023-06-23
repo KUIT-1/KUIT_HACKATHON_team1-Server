@@ -17,11 +17,12 @@ public class MenuService {
     private final MenuRepository menuRepository;
 
     public List<RecommandMenuDTO> find() {
-        List<Menu> menuList = menuRepository.findRecommendMenuByDtype("F");
+        List<Menu> menuList = menuRepository.findRecommendMenuByDtype("FOOD");
         List<RecommandMenuDTO> menuDTOS = menuList.stream()
                 .map(menu ->
                         new RecommandMenuDTO(menu.getName().getNameKr(), menu.getImageUrl()))
                 .collect(Collectors.toList());
+
         return menuDTOS;
     }
 }
