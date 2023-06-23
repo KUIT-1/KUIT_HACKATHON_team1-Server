@@ -17,6 +17,8 @@ public class OptionService {
 
     public DrinkOption findOptionByMenuId(Long id) {
         Option option = jpaRepository.findByMenuId(id);
+        if (option==null) throw new IllegalArgumentException("값이 없습니다.");
+
         DrinkOption drinkOption = new DrinkOption(
                 option.getId(),
                 option.getSize(),
@@ -30,14 +32,15 @@ public class OptionService {
         return drinkOption;
     }
 
-    public DrinkOption getOptions_drink(String menuId) {
+    @Deprecated
+    public DrinkOption getOptions_drink(Long menuId) {
 
         DrinkOption options = optionRepository.getOptions_drink(menuId);
         return options;
 
     }
 
-    public FoodOption getOptions_food(String menuId) {
+    public FoodOption getOptions_food(Long menuId) {
 
         FoodOption options = optionRepository.getOptions_food(menuId);
         return options;

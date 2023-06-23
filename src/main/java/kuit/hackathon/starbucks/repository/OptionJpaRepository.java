@@ -7,6 +7,6 @@ import org.springframework.data.repository.query.Param;
 
 public interface OptionJpaRepository extends JpaRepository<Option, Long> {
 
-    @Query("select o from Option o where o.menu.id = :menuId ")
+//    @Query("select o from Option o where o.menu.id = :menuId ")
     Option findByMenuId(@Param("menuId") Long menuId);
 }
