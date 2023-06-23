@@ -5,7 +5,7 @@ import lombok.Setter;
 import org.springframework.data.annotation.AccessType;
 
 @Getter
-public class DrinkOption {
+public class DrinkOption extends OptionDto {
     private Long optionId;
     private String size;
     private String cup;
