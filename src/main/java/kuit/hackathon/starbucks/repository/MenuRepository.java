@@ -11,5 +11,8 @@ public interface MenuRepository extends JpaRepository<Menu, Long> {
 
     @Query(value = "select * from Menu where dtype = :dtype", nativeQuery = true)
     List<Menu> findRecommendMenuByDtype(@Param("dtype") String dType);
+
+    @Query(value = "SELECT m FROM Menu m WHERE m.name.nameKr LIKE %:name% or m.name.nameEng LIKE %:name%")
+    List<Menu> searchByName(@Param("name") String name);
 }
 
