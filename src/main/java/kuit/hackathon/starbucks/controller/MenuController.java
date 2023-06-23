@@ -1,5 +1,6 @@
 package kuit.hackathon.starbucks.controller;
 
+import kuit.hackathon.starbucks.domain.entity.menu.Menu;
 import kuit.hackathon.starbucks.repository.DTO.*;
 import kuit.hackathon.starbucks.sevice.MenuService;
 import lombok.RequiredArgsConstructor;
@@ -43,6 +44,13 @@ public class MenuController {
     @GetMapping("/subCategory")
     public HttpEntity<MenuListDto> getMenus(@RequestParam Long id) {
         List<MenusResponseDto> menus = menuService.getMenus(id);
-        return new ResponseEntity<>(new MenuListDto(menus),HttpStatusCode.valueOf(200));
+        return new ResponseEntity<>(new MenuListDto(menus), HttpStatusCode.valueOf(200));
     }
+
+    @GetMapping("/{menuId}")
+    public HttpEntity<MenuDetailDto> getMenuDetail(@PathVariable Long menuId) {
+        MenuDetailDto menuDetail = menuService.getMenu(menuId);
+        return new ResponseEntity<>(menuDetail, HttpStatusCode.valueOf(200));
+    }
+
 }
