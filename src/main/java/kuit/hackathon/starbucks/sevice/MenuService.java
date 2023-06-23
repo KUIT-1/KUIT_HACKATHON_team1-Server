@@ -2,6 +2,7 @@ package kuit.hackathon.starbucks.sevice;
 
 import kuit.hackathon.starbucks.domain.entity.category.SubCategory;
 import kuit.hackathon.starbucks.domain.entity.menu.Menu;
+import kuit.hackathon.starbucks.repository.DTO.MenusResponseDto;
 import kuit.hackathon.starbucks.repository.DTO.RecommandMenuDTO;
 import kuit.hackathon.starbucks.repository.DTO.SearchResultResponseDto;
 import kuit.hackathon.starbucks.repository.DTO.SubCategoryResponseDto;
@@ -60,5 +61,15 @@ public class MenuService {
         });
 
         return searchResultResponseDto;
+    }
+
+    public List<MenusResponseDto> getMenus(Long id) {
+        List<Menu> menus=menuRepository.getAllByMenusId(id);
+        List<MenusResponseDto> menusResponseDtos = new ArrayList<>();
+        for(Menu m : menus){
+            MenusResponseDto menusResponseDto = new MenusResponseDto(m);
+            menusResponseDtos.add(menusResponseDto);
+        }
+        return menusResponseDtos;
     }
 }

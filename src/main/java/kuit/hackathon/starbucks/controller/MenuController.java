@@ -39,4 +39,10 @@ public class MenuController {
         SearchResultResponseDto searchResultResponseDto = menuService.searchByName(name);
         return new ResponseEntity<>(searchResultResponseDto, HttpStatusCode.valueOf(200));
     }
+
+    @GetMapping("/subCategory")
+    public HttpEntity<MenuListDto> getMenus(@RequestParam Long id) {
+        List<MenusResponseDto> menus = menuService.getMenus(id);
+        return new ResponseEntity<>(new MenuListDto(menus),HttpStatusCode.valueOf(200));
+    }
 }

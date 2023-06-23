@@ -9,6 +9,9 @@ import java.util.List;
 
 public interface MenuRepository extends JpaRepository<Menu, Long> {
 
+    @Query(value = "select m from Menu m where m.subCategory.id =:id")
+    List<Menu> getAllByMenusId(@Param("id") Long id);
+
     @Query(value = "select * from Menu where dtype = :dtype", nativeQuery = true)
     List<Menu> findRecommendMenuByDtype(@Param("dtype") String dType);
 
