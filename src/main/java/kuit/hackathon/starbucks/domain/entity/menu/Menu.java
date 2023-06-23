@@ -1,10 +1,10 @@
 package kuit.hackathon.starbucks.domain.entity.menu;
 
 import jakarta.persistence.*;
+import kuit.hackathon.starbucks.domain.entity.Option;
 import kuit.hackathon.starbucks.domain.entity.category.SubCategory;
 import kuit.hackathon.starbucks.domain.others.BaseEntity;
 import kuit.hackathon.starbucks.domain.others.Name;
-import kuit.hackathon.starbucks.domain.entity.Option;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn
+//@DiscriminatorColumn(name = "dtype")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Menu extends BaseEntity {
 
@@ -30,6 +30,9 @@ public class Menu extends BaseEntity {
 
     @Column(name = "image_url")
     private String imageUrl;
+
+    @Column(name = "dtype")
+    private String dtype;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "option_id")

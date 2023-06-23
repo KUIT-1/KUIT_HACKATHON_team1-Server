@@ -2,8 +2,10 @@ package kuit.hackathon.starbucks.domain.others;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+import lombok.Getter;
 
 @Embeddable
+@Getter
 public class Name {
 
     @Column(name = "name_kr", length = 20)
