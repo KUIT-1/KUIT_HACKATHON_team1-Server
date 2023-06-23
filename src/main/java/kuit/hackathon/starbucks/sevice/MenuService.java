@@ -63,6 +63,17 @@ public class MenuService {
         return searchResultResponseDto;
     }
 
+    public List<MenusResponseDto> search(String name) {
+        List<Menu> menus = menuRepository.searchByName(name);
+
+        List<MenusResponseDto> menusResponseDtos = new ArrayList<>();
+        for(Menu m : menus){
+            MenusResponseDto menusResponseDto = new MenusResponseDto(m);
+            menusResponseDtos.add(menusResponseDto);
+        }
+        return menusResponseDtos;
+    }
+
     public List<MenusResponseDto> getMenus(Long id) {
         List<Menu> menus=menuRepository.getAllByMenusId(id);
         List<MenusResponseDto> menusResponseDtos = new ArrayList<>();
