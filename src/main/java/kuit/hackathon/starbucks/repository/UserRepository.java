@@ -1,6 +1,6 @@
 package kuit.hackathon.starbucks.repository;
 
-import kuit.hackathon.starbucks.domain.User;
+import kuit.hackathon.starbucks.domain.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<User, Long> {

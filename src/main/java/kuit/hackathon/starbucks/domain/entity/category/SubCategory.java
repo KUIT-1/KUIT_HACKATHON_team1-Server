@@ -1,8 +1,8 @@
-package kuit.hackathon.starbucks.category;
+package kuit.hackathon.starbucks.domain.entity.category;
 
 
 import jakarta.persistence.*;
-import kuit.hackathon.starbucks.domain.Name;
+import kuit.hackathon.starbucks.domain.others.Name;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,5 +19,9 @@ public class SubCategory {
 
     @Embedded
     private Name name;
+
+//    @ManyToOne
+//    @JoinColumn(name = "main_category_id")
+//    private MainCategory mainCategory;
 
 }

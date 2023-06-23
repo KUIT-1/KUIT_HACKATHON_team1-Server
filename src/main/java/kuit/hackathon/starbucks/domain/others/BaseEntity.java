@@ -1,4 +1,4 @@
-package kuit.hackathon.starbucks.domain;
+package kuit.hackathon.starbucks.domain.others;
 
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;

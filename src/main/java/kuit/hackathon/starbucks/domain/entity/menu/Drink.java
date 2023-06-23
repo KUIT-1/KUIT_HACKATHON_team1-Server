@@ -1,4 +1,4 @@
-package kuit.hackathon.starbucks.domain.menu;
+package kuit.hackathon.starbucks.domain.entity.menu;
 
 import jakarta.persistence.*;
 import lombok.Getter;

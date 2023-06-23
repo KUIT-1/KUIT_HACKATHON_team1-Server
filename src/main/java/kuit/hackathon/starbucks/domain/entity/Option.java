@@ -1,7 +1,7 @@
-package kuit.hackathon.starbucks.domain;
+package kuit.hackathon.starbucks.domain.entity;
 
 import jakarta.persistence.*;
-import kuit.hackathon.starbucks.domain.menu.Menu;
+import kuit.hackathon.starbucks.domain.entity.menu.Menu;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
