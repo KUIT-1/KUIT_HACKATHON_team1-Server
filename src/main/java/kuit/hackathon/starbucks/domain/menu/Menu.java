@@ -2,6 +2,7 @@ package kuit.hackathon.starbucks.domain.menu;
 
 import jakarta.persistence.*;
 import kuit.hackathon.starbucks.domain.BaseEntity;
+import kuit.hackathon.starbucks.domain.Name;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,11 +19,8 @@ public class Menu extends BaseEntity {
     @Column(name = "menu_id")
     private Long id;
 
-    @Column(name = "name_kr", length = 20)
-    private String nameKr;
-
-    @Column(name = "name_eng", length = 30)
-    private String nameEng;
+    @Embedded
+    private Name name;
 
     private Long price;
 
