@@ -7,10 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,13 +15,12 @@ import java.util.List;
 @Slf4j
 @RequestMapping("/menu")
 @RequiredArgsConstructor
-public class MenuController
-{
+public class MenuController {
     private final MenuService menuService;
 
 
     @GetMapping("/recommend")
-    public ResponseEntity<RecommendDtos> findRecommned(){
+    public ResponseEntity<RecommendDtos> findRecommned() {
         log.info("jjj");
         List<RecommandMenuDTO> list = menuService.find();
         RecommendDtos recommendDtos = new RecommendDtos(list);
@@ -36,6 +32,12 @@ public class MenuController
         List<SubCategoryResponseDto> categories = menuService.getCategories(id);
         return new ResponseEntity<>(new ListDto(categories), HttpStatusCode.valueOf(200));
         //return id;
+    }
+
+    @GetMapping
+    public HttpEntity<SearchResultResponseDto> searchByName(@RequestParam String name) {
+        SearchResultResponseDto searchResultResponseDto = menuService.searchByName(name);
+        return new ResponseEntity<>(searchResultResponseDto, HttpStatusCode.valueOf(200));
     }
 
     @GetMapping("/subCategory")

@@ -4,6 +4,7 @@ import kuit.hackathon.starbucks.domain.entity.category.SubCategory;
 import kuit.hackathon.starbucks.domain.entity.menu.Menu;
 import kuit.hackathon.starbucks.repository.DTO.MenusResponseDto;
 import kuit.hackathon.starbucks.repository.DTO.RecommandMenuDTO;
+import kuit.hackathon.starbucks.repository.DTO.SearchResultResponseDto;
 import kuit.hackathon.starbucks.repository.DTO.SubCategoryResponseDto;
 import kuit.hackathon.starbucks.repository.MenuRepository;
 import kuit.hackathon.starbucks.repository.SubCategoryRepository;
@@ -43,6 +44,23 @@ public class MenuService {
             log.info("sub ~~ {} {} {} ", subCategoryResponseDto.getId(), subCategoryResponseDto.getName_kr(), subCategoryResponseDto.getName_eng());
         }
         return subCategoryResponseDtos;
+    }
+
+    public SearchResultResponseDto searchByName(String name) {
+        List<Menu> menus = menuRepository.searchByName(name);
+
+        SearchResultResponseDto searchResultResponseDto = new SearchResultResponseDto();
+
+        menus.forEach(menu -> {
+            searchResultResponseDto.addDto(
+                    menu.getId(),
+                    menu.getName().getNameKr(),
+                    menu.getName().getNameEng(),
+                    menu.getImageUrl(),
+                    menu.getPrice());
+        });
+
+        return searchResultResponseDto;
     }
 
     public List<MenusResponseDto> getMenus(Long id) {
