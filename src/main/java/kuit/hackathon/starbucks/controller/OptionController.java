@@ -21,7 +21,8 @@ public class OptionController {
     private final OptionService optionService;
 
 //    @GetMapping("/drink/{menuId}/options")
-    public ResponseEntity<DrinkOption> getOptions_drink(@PathVariable String menuId) {
+    /*
+    public ResponseEntity<DrinkOption> getOptions_drink(@PathVariable Long menuId) {
         log.info("OptionController.drinkOption");
         log.info("menuId={}", menuId);
 
@@ -29,7 +30,9 @@ public class OptionController {
         return new ResponseEntity<>(drinkOption, HttpStatusCode.valueOf(200)) ;
     }
 
-    @GetMapping("/drink/{menuId}/options")
+     */
+
+    @GetMapping("/{menuId}/options")
     public ResponseEntity<DrinkOption> getOptions_drink(@PathVariable Long menuId) {
 
         log.info("sadf");
@@ -37,8 +40,10 @@ public class OptionController {
         return new ResponseEntity<>(drinkOption, HttpStatusCode.valueOf(200)) ;
     }
 
-    @GetMapping("/food/{menuId}/options")
-    public HttpEntity<FoodOption> getOptions_food(@PathVariable String menuId) {
+
+
+    //@GetMapping("/{menuId}/options")
+    public HttpEntity<FoodOption> getOptions_food(@PathVariable Long menuId) {
         log.info("OptionController.foodOption");
 
         FoodOption foodOption = optionService.getOptions_food(menuId);
