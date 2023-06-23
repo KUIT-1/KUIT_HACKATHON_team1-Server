@@ -1,24 +1,73 @@
 spring:
+  profiles:
+    group:
+      "local": "localDB, default"
+      "dev": "devDB, default"
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: "localDB"
+
   datasource:
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:tcp://localhost/~/kuit-hackathon # db 경로
-    username: sa
-    password:
+#    url: jdbc:h2:tcp://localhost/~/kuit-hackathon # db 경로
+#    username: sa
+#    password:
 
+---
 
-  jpa:
-    hibernate:
-      ddl-auto: create # 애플리케이션 시작 시 모든 table drop하고 새로 create / 개발 단계에서만 사용
-    properties:
+spring:
+  config:
+    activate:
+      on-profile: "devDB"
+
+  datasource:
+    url: ${DATASOURCE_URL_LOCAL}
+    username: ${DATASOURCE_USERNAME}
+    password: ${DATASOURCE_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    dbcp2:
+      validation-query: select 1
+  sql:
+    init:
+      platform: mysql
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: "default"
+
+    jpa:
       hibernate:
-        format_sql: true # 표시되는 sql 정렬
-        order_by.default_null_ordering: last
-        default_batch_fetch_size: 100
+        ddl-auto: create # 애플리케이션 시작 시 모든 table drop하고 새로 create / 개발 단계에서만 사용
+      properties:
+        hibernate:
+          format_sql: true # 표시되는 sql 정렬
+          order_by.default_null_ordering: last
+          default_batch_fetch_size: 100
 
-logging.level:
-  org.hibernate.SQL: debug # sql 표시
+  mvc:
+    throw-exception-if-no-handler-found: true
+
+  web:
+    resources:
+      add-mappings: false
+
+  messages:
+    basename: errors
+
+  logging.level:
+    org.hibernate.SQL: debug # sql 표시
+
+  server:
+    servlet:
+      session:
+        tracking-modes: cookie
 
 server:
-  servlet:
-    session:
-      tracking-modes: cookie
+  port: 9000
