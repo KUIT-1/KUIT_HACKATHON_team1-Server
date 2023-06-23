@@ -35,7 +35,7 @@ public class MenuController {
     }
 
     @GetMapping
-    public HttpEntity<SearchResultResponseDto> searchByName(@PathVariable String name) {
+    public HttpEntity<SearchResultResponseDto> searchByName(@RequestParam String name) {
         SearchResultResponseDto searchResultResponseDto = menuService.searchByName(name);
         return new ResponseEntity<>(searchResultResponseDto, HttpStatusCode.valueOf(200));
     }
