@@ -1,6 +1,7 @@
 package kuit.hackathon.starbucks.domain;
 
 import jakarta.persistence.*;
+import kuit.hackathon.starbucks.domain.menu.Menu;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -35,5 +36,9 @@ public class Option {
     private Integer shot;
 
     private Integer syrup;
+
+    @OneToOne(mappedBy = "option")
+    private Menu menu;
+
 
 }

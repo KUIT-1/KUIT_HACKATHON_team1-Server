@@ -3,6 +3,7 @@ package kuit.hackathon.starbucks.domain.menu;
 import jakarta.persistence.*;
 import kuit.hackathon.starbucks.domain.BaseEntity;
 import kuit.hackathon.starbucks.domain.Name;
+import kuit.hackathon.starbucks.domain.Option;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,5 +29,10 @@ public class Menu extends BaseEntity {
 
     @Column(name = "image_url")
     private String imageUrl;
+
+    @OneToOne
+    @JoinColumn(name = "option_id")
+    private Option option;
+
 
 }
