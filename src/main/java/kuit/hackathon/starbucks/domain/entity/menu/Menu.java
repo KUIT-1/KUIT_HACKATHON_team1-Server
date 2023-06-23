@@ -1,6 +1,7 @@
 package kuit.hackathon.starbucks.domain.entity.menu;
 
 import jakarta.persistence.*;
+import kuit.hackathon.starbucks.domain.entity.category.SubCategory;
 import kuit.hackathon.starbucks.domain.others.BaseEntity;
 import kuit.hackathon.starbucks.domain.others.Name;
 import kuit.hackathon.starbucks.domain.entity.Option;
@@ -30,9 +31,12 @@ public class Menu extends BaseEntity {
     @Column(name = "image_url")
     private String imageUrl;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "option_id")
     private Option option;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "sub_category_id")
+    private SubCategory subCategory;
 
 }

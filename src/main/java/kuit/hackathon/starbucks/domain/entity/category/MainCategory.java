@@ -6,6 +6,9 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -19,7 +22,7 @@ public class MainCategory {
     @Column(length = 20)
     private String mainCategory;
 
-//    @OneToMany(mappedBy = "mainCategory")
-//    private List<SubCategory> subCategories = new ArrayList<>();
+    @OneToMany(mappedBy = "mainCategory")
+    private List<SubCategory> subCategories = new ArrayList<>();
 
 }
