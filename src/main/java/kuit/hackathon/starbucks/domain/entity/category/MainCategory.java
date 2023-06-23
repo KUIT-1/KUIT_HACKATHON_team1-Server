@@ -1,4 +1,4 @@
-package kuit.hackathon.starbucks.category;
+package kuit.hackathon.starbucks.domain.entity.category;
 
 
 import jakarta.persistence.*;
@@ -18,4 +18,8 @@ public class MainCategory {
 
     @Column(length = 20)
     private String mainCategory;
+
+//    @OneToMany(mappedBy = "mainCategory")
+//    private List<SubCategory> subCategories = new ArrayList<>();
+
 }

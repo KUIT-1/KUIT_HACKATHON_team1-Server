@@ -1,6 +1,5 @@
 package kuit.hackathon.starbucks.sevice;
 
-import kuit.hackathon.starbucks.domain.User;
 import kuit.hackathon.starbucks.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

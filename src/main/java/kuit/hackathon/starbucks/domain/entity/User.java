@@ -1,6 +1,8 @@
-package kuit.hackathon.starbucks.domain;
+package kuit.hackathon.starbucks.domain.entity;
 
 import jakarta.persistence.*;
+import kuit.hackathon.starbucks.domain.others.BaseEntity;
+import kuit.hackathon.starbucks.domain.others.Status;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "users")
-public class User extends BaseEntity{
+public class User extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,8 +25,8 @@ public class User extends BaseEntity{
 
     @Enumerated(value = EnumType.STRING)
     private Status status;
-    @Enumerated(value = EnumType.STRING)
-    private Level grade;
+//    @Enumerated(value = EnumType.STRING)
+//    private Level grade;
 
 //    public static User createUser(String name, String loginId, String password) {
 //        User user = new User();
