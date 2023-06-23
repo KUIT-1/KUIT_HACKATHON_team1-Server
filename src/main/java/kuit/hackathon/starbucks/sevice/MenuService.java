@@ -2,10 +2,7 @@ package kuit.hackathon.starbucks.sevice;
 
 import kuit.hackathon.starbucks.domain.entity.category.SubCategory;
 import kuit.hackathon.starbucks.domain.entity.menu.Menu;
-import kuit.hackathon.starbucks.repository.DTO.MenusResponseDto;
-import kuit.hackathon.starbucks.repository.DTO.RecommandMenuDTO;
-import kuit.hackathon.starbucks.repository.DTO.SearchResultResponseDto;
-import kuit.hackathon.starbucks.repository.DTO.SubCategoryResponseDto;
+import kuit.hackathon.starbucks.repository.DTO.*;
 import kuit.hackathon.starbucks.repository.MenuRepository;
 import kuit.hackathon.starbucks.repository.SubCategoryRepository;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -82,5 +80,15 @@ public class MenuService {
             menusResponseDtos.add(menusResponseDto);
         }
         return menusResponseDtos;
+    }
+
+    public MenuDetailDto getMenu(Long menuId) {
+        Optional<Menu> byId = menuRepository.findById(menuId);
+        Optional<MenuDetailDto> menuDetailDto = byId.map(menu -> {
+            return new MenuDetailDto(menu.getId(), menu.getName().getNameKr(), menu.getName().getNameEng(),
+                    menu.getImageUrl(), menu.getInfo());
+        });
+
+        return menuDetailDto.get();
     }
 }
