@@ -18,6 +18,7 @@ public class SearchResultResponseDto {
         searchDtos.add(new SearchDto(menuId, nameKr, nameEng, imageUrl, price));
     }
 
+    @Getter
     @AllArgsConstructor
     class SearchDto {
         private Long menuId;
