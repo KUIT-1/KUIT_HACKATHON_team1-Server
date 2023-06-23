@@ -84,11 +84,14 @@ public class MenuService {
 
     public MenuDetailDto getMenu(Long menuId) {
         Optional<Menu> byId = menuRepository.findById(menuId);
-        Optional<MenuDetailDto> menuDetailDto = byId.map(menu -> {
-            return new MenuDetailDto(menu.getId(), menu.getName().getNameKr(), menu.getName().getNameEng(),
-                    menu.getImageUrl(), menu.getInfo());
-        });
 
-        return menuDetailDto.get();
+        Optional<MenuDetailDto> menuDetailDto = byId.map(menu ->
+            new MenuDetailDto(menu.getId(), menu.getName().getNameKr(), menu.getName().getNameEng(),
+                    menu.getImageUrl(), menu.getInfo())
+        );
+
+        MenuDetailDto dto = menuDetailDto.get();
+        System.out.println("dto.getMenuDetail() = " + dto.getMenuDetail());
+        return dto;
     }
 }

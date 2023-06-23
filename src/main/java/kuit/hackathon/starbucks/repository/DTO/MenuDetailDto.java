@@ -9,7 +9,7 @@ public class MenuDetailDto {
     private MenuDetail menuDetail;
 
     public MenuDetailDto (Long id, String name_kr, String name_eng, String image_url, String info){
-        MenuDetail menuDetail = new MenuDetail(
+        menuDetail = new MenuDetail(
                 id, name_kr, name_eng, image_url, info
         );
     }
