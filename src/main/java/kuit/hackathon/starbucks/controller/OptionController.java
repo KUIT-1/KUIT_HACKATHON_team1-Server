@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RequestMapping("/menus")
 public class OptionController {
-
     private final OptionService optionService;
 
     @GetMapping("/drink/{menuId}/options")
@@ -39,5 +38,4 @@ public class OptionController {
         ResponseEntity<FoodOption> responseEntity = new ResponseEntity<>(HttpStatusCode.valueOf(200));
         return responseEntity;
     }
-
 }
